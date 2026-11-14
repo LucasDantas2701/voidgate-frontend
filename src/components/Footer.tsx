@@ -6,11 +6,7 @@ export function Footer() {
     <footer className="footer">
       <div>
         <Logo size="footer" />
-        <p>
-          Feito no Amazonas para o HackBrasil 2026.
-          <br />
-          Código e textos produzidos com ajuda de IA.
-        </p>
+        <p>Feito no Amazonas para o HackBrasil 2026.</p>
       </div>
       <p className="footer__right">
         Josias, Kael, Matheus e Lucas
