@@ -10,6 +10,9 @@ export function Nav() {
       <nav aria-label="Seções">
         <ul className="nav__links">
           <li>
+            <a href="#teste">Teste um ataque</a>
+          </li>
+          <li>
             <a href="#para-quem">Para quem</a>
           </li>
           <li>

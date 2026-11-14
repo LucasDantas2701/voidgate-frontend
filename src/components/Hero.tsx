@@ -11,6 +11,9 @@ export function Hero() {
           tenta manipular a IA e esconde dados pessoais antes que eles vazem.
         </p>
         <div className="hero__actions">
+          <a className="btn btn--primary" href="#teste">
+            Testar um ataque
+          </a>
           <a className="btn btn--ghost" href={GITHUB_URL}>
             Ver o código no GitHub
           </a>

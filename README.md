@@ -7,8 +7,13 @@ Backend: [VoidGates/voidgate-backend](https://github.com/VoidGates/voidgate-back
 ## O que tem aqui
 
 O site de apresentação do VoidGate, em tema escuro, para um público de negócios.
-Por enquanto: abertura, "para quem" e código aberto. As seções interativas
-(teste de ataque, como funciona, comparação e quiz) entram nos próximos PRs.
+Por enquanto: abertura, "Tente enganar a IA", "para quem" e código aberto. As
+outras seções interativas (como funciona, comparação e quiz) entram nos próximos PRs.
+
+"Tente enganar a IA" roda inteiro no navegador, com regras simplificadas em
+`src/detector/` (manipulação em português e inglês, caracteres invisíveis, CPF
+com dígito verificador e e-mail). Não é o motor do back-end e não envia nada
+para servidor nenhum.
 
 ## Stack
 
