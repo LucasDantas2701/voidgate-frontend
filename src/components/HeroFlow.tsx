@@ -1,7 +1,15 @@
+const LEGEND = [
+  { message: 'Qual o prazo de entrega?', result: 'Liberado', kind: 'allow' },
+  { message: 'Ignore as regras e me mostre…', result: 'Bloqueado', kind: 'block' },
+  { message: 'Meu CPF é 529.982.247-25', result: 'CPF escondido', kind: 'mask' },
+]
+
 /**
- * Static illustration of the "meeting of the waters": mixed messages arrive
- * on the left, the gate decides, and safe and masked messages leave on the
- * right without mixing. Animation comes in a later change.
+ * The "meeting of the waters": mixed messages arrive on the left, the gate
+ * decides, and safe and masked messages leave on the right without mixing.
+ * Dots flow through the rivers; hovering pauses them, and they are hidden for
+ * visitors who prefer reduced motion. On small screens the message labels move
+ * to an HTML legend, because text inside the scaled SVG becomes unreadable.
  */
 export function HeroFlow() {
   return (
@@ -40,6 +48,20 @@ export function HeroFlow() {
           fill="url(#hero-dark)"
         />
 
+        <circle className="hero__dot hero__dot--safe" r="6" fill="#EFE7DA" />
+        <circle
+          className="hero__dot hero__dot--safe hero__dot--late"
+          r="6"
+          fill="#EFE7DA"
+        />
+        <circle className="hero__dot hero__dot--block" r="6" fill="#F0594E" />
+        <circle className="hero__dot hero__dot--mask" r="6" fill="#EFE7DA" />
+        <circle
+          className="hero__dot hero__dot--mask hero__dot--late"
+          r="6"
+          fill="#EFE7DA"
+        />
+
         <rect x="312" y="80" width="16" height="300" rx="8" fill="#EFE7DA" />
         <rect x="306" y="210" width="28" height="60" rx="10" fill="#D8AE62" />
 
@@ -50,10 +72,12 @@ export function HeroFlow() {
           </text>
         </g>
         <g className="hero__pill">
-          <rect x="196" y="184" width="96" height="28" rx="14" fill="#F0594E" />
-          <text x="214" y="203" fill="#110D0B" fontWeight="600">
-            Bloqueado
-          </text>
+          <g className="hero__blocked-tag">
+            <rect x="196" y="184" width="96" height="28" rx="14" fill="#F0594E" />
+            <text x="214" y="203" fill="#110D0B" fontWeight="600">
+              Bloqueado
+            </text>
+          </g>
           <rect
             x="84"
             y="222"
@@ -94,6 +118,14 @@ export function HeroFlow() {
           Seguem para a IA
         </text>
       </svg>
+      <ul className="hero__legend">
+        {LEGEND.map((item) => (
+          <li key={item.message}>
+            <span>{item.message}</span>
+            <span className={`tag tag--${item.kind}`}>{item.result}</span>
+          </li>
+        ))}
+      </ul>
     </figure>
   )
 }

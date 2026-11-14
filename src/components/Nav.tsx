@@ -13,6 +13,9 @@ export function Nav() {
             <a href="#teste">Teste um ataque</a>
           </li>
           <li>
+            <a href="#como-funciona">Como funciona</a>
+          </li>
+          <li>
             <a href="#para-quem">Para quem</a>
           </li>
           <li>
