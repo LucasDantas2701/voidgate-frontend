@@ -7,9 +7,9 @@ Backend: [VoidGates/voidgate-backend](https://github.com/VoidGates/voidgate-back
 ## O que tem aqui
 
 O site de apresentação do VoidGate, em tema escuro, para um público de negócios.
-Por enquanto: abertura animada, "Tente enganar a IA", "Como funciona", "para
-quem" e código aberto. A comparação com e sem proteção e o quiz entram nos
-próximos PRs. As animações param para quem ativa "reduzir movimento" no sistema.
+Seções: abertura animada, "Tente enganar a IA", a mesma conversa com e sem
+proteção, "Como funciona", o quiz "Você consegue ver o ataque?", "para quem" e
+código aberto. As animações param para quem ativa "reduzir movimento" no sistema.
 
 "Tente enganar a IA" roda inteiro no navegador, com regras simplificadas em
 `src/detector/` (manipulação em português e inglês, caracteres invisíveis, CPF

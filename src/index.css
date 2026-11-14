@@ -734,6 +734,209 @@ textarea:focus-visible {
   }
 }
 
+/* Before and after */
+
+.compare {
+  position: relative;
+  min-height: 360px;
+  margin-top: 48px;
+  overflow: hidden;
+  border: 1px solid var(--color-clay);
+  border-radius: 22px;
+}
+
+.compare__side {
+  position: absolute;
+  inset: 0;
+  padding: 72px clamp(20px, 4vw, 44px) 32px;
+}
+
+.compare__side--without {
+  background: #1e1210;
+}
+
+.compare__side--with {
+  background: var(--color-bank);
+}
+
+.compare__label {
+  position: absolute;
+  top: 20px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 35%);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.compare__label--without {
+  left: 20px;
+  color: var(--color-blocked);
+}
+
+.compare__label--with {
+  right: 20px;
+  color: var(--color-allowed);
+}
+
+.compare__chat {
+  display: grid;
+  gap: 14px;
+  max-width: 460px;
+}
+
+.compare__chat--end {
+  margin-left: auto;
+}
+
+.bubble {
+  margin: 0;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: var(--color-clay);
+}
+
+.bubble--leak {
+  background: #2a1a17;
+}
+
+.compare__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-gold);
+  transform: translateX(-1px);
+  pointer-events: none;
+}
+
+.compare__handle span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-river);
+  font-weight: 800;
+  transform: translate(-50%, -50%);
+}
+
+.compare__range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+
+.compare:has(.compare__range:focus-visible) .compare__handle span {
+  outline: 3px solid var(--color-sand);
+  outline-offset: 3px;
+}
+
+/* Quiz */
+
+.quiz {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 28px;
+  align-items: start;
+  margin-top: 48px;
+}
+
+.quiz__card {
+  padding: clamp(24px, 3vw, 36px);
+}
+
+.quiz__progress {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.quiz__progress i {
+  flex: 1;
+  height: 5px;
+  border-radius: 5px;
+  background: var(--color-clay);
+  transition: background-color 200ms ease;
+}
+
+.quiz__progress i.is-done {
+  background: var(--color-gold);
+}
+
+.quiz__count {
+  color: var(--color-sand-muted);
+  font-size: 14px;
+}
+
+.quiz__message {
+  margin: 12px 0 16px;
+  font-size: clamp(20px, 2vw, 24px);
+  line-height: 1.45;
+}
+
+.quiz__context {
+  margin-bottom: 20px;
+  padding-left: 14px;
+  border-left: 3px solid var(--color-clay);
+  color: var(--color-sand-muted);
+  font-size: 15px;
+}
+
+.quiz__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.quiz__buttons .btn {
+  flex: 1;
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quiz__buttons .btn--ghost {
+  border-color: var(--color-clay);
+  background: transparent;
+  color: var(--color-sand);
+}
+
+.quiz__buttons .btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.quiz__restart,
+.quiz__feedback .btn {
+  margin-top: 24px;
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quiz__feedback .btn--ghost {
+  border-color: var(--color-clay);
+  background: transparent;
+  color: var(--color-sand);
+}
+
+.quiz__feedback h3 {
+  margin: 18px 0 12px;
+  font-size: clamp(24px, 2.4vw, 30px);
+}
+
 /* Footer */
 
 .footer {
@@ -761,7 +964,8 @@ textarea:focus-visible {
   .hero,
   .oss,
   .play,
-  .how {
+  .how,
+  .quiz {
     grid-template-columns: 1fr;
   }
 
@@ -783,6 +987,24 @@ textarea:focus-visible {
 }
 
 @media (max-width: 600px) {
+  /* Overlapping conversations are unreadable on a phone: stack them instead. */
+  .compare {
+    min-height: 0;
+  }
+
+  .compare__side {
+    position: relative;
+    padding-top: 64px;
+    /* Overrides the inline clip used by the desktop slider. */
+    clip-path: none !important;
+  }
+
+  .compare__handle,
+  .compare__range,
+  .compare__hint {
+    display: none;
+  }
+
   .hero__pill,
   .hero__caption {
     display: none;
@@ -814,5 +1036,9 @@ textarea:focus-visible {
 
   .panel {
     padding: 20px;
+  }
+
+  .compare__chat {
+    max-width: 85%;
   }
 }
